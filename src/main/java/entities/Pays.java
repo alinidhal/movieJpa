@@ -3,14 +3,19 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**Pays 
+/**
+ * Pays
  * 
  * Represente un pays
  * 
@@ -18,43 +23,50 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="PAYS")
+@Table(name = "PAYS")
 public class Pays {
-	
+
 	/**
 	 * Attribut id de la table PAYS
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	/**
 	 * Attribut nom
 	 */
-	@Column(name="NOM")
+	@Column(name = "NOM")
 	private String nom;
-	
+
 	/**
 	 * Attribut url
 	 */
-	@Column(name="URL")
+	@Column(name = "URL")
 	private String url;
 
-	/**Constructeur Pays
-	
+	@OneToMany(mappedBy = "pays")
+	private List<Film> film = new ArrayList<Film>();
+
+	/**
+	 * Constructeur
+	 * 
 	 * @param id
 	 * @param nom
 	 * @param url
+	 * @param film
 	 */
-	public Pays(int id, String nom, String url) {
+	public Pays(int id, String nom, String url, List<Film> film) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.url = url;
+		this.film = film;
 	}
 
-	/**Constructeur sans paramettre et vide
-	
+	/**
+	 * Constructeur sans paramettre et vide
+	 * 
 	 */
 	public Pays() {
 		super();
@@ -62,11 +74,12 @@ public class Pays {
 
 	@Override
 	public String toString() {
-		return "Pays [id=" + id + ", nom=" + nom + ", url=" + url + "]";
+		return "Pays [id=" + id + ", nom=" + nom + ", url=" + url + ", film=" + film + "]";
 	}
 
 	/**
 	 * Getter pour id
+	 * 
 	 * @return id
 	 */
 	public int getId() {
@@ -74,7 +87,8 @@ public class Pays {
 	}
 
 	/**
-	 * Setter pour id 
+	 * Setter pour id
+	 * 
 	 * @param id
 	 */
 	public void setId(int id) {
@@ -83,6 +97,7 @@ public class Pays {
 
 	/**
 	 * Getter pour nom
+	 * 
 	 * @return nom
 	 */
 	public String getNom() {
@@ -90,7 +105,8 @@ public class Pays {
 	}
 
 	/**
-	 * Setter pour nom 
+	 * Setter pour nom
+	 * 
 	 * @param nom
 	 */
 	public void setNom(String nom) {
@@ -99,6 +115,7 @@ public class Pays {
 
 	/**
 	 * Getter pour url
+	 * 
 	 * @return url
 	 */
 	public String getUrl() {
@@ -106,13 +123,30 @@ public class Pays {
 	}
 
 	/**
-	 * Setter pour url 
+	 * Setter pour url
+	 * 
 	 * @param url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
+
+	/**
+	 * Getter pour film
+	 * 
+	 * @return film
+	 */
+	public List<Film> getFilm() {
+		return film;
+	}
+
+	/**
+	 * Setter pour film
+	 * 
+	 * @param film
+	 */
+	public void setFilm(List<Film> film) {
+		this.film = film;
+	}
 
 }

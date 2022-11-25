@@ -3,11 +3,15 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,28 +39,38 @@ public class Realisateur {
 	 */
 	@Column(name = "IDENTITE")
 	private String identite;
-	
+
 	/**
 	 * Attribut URL
 	 */
-	@Column(name="URL")
+	@Column(name = "URL")
 	private String url;
 
-	/**Constructeur avec paramettre
-	
+	/**
+	 * Attribut film
+	 */
+	@ManyToMany(mappedBy = "realisateurs")
+	private List<Film> film = new ArrayList<Film>();
+
+	/**
+	 * Constructeur
+	 * 
 	 * @param id
 	 * @param identite
 	 * @param url
+	 * @param film
 	 */
-	public Realisateur(int id, String identite, String url) {
+	public Realisateur(int id, String identite, String url, List<Film> film) {
 		super();
 		this.id = id;
 		this.identite = identite;
 		this.url = url;
+		this.film = film;
 	}
 
-	/**Constructeur vide sans paramettre
-	
+	/**
+	 * Constructeur vide sans paramettre
+	 * 
 	 */
 	public Realisateur() {
 		super();
@@ -64,11 +78,12 @@ public class Realisateur {
 
 	@Override
 	public String toString() {
-		return "Realisateur [id=" + id + ", identite=" + identite + ", url=" + url + "]";
+		return "Realisateur [id=" + id + ", identite=" + identite + ", url=" + url + ", film=" + film + "]";
 	}
 
 	/**
 	 * Getter pour id
+	 * 
 	 * @return id
 	 */
 	public int getId() {
@@ -76,7 +91,8 @@ public class Realisateur {
 	}
 
 	/**
-	 * Setter pour id 
+	 * Setter pour id
+	 * 
 	 * @param id
 	 */
 	public void setId(int id) {
@@ -85,6 +101,7 @@ public class Realisateur {
 
 	/**
 	 * Getter pour identite
+	 * 
 	 * @return identite
 	 */
 	public String getIdentite() {
@@ -92,7 +109,8 @@ public class Realisateur {
 	}
 
 	/**
-	 * Setter pour identite 
+	 * Setter pour identite
+	 * 
 	 * @param identite
 	 */
 	public void setIdentite(String identite) {
@@ -101,6 +119,7 @@ public class Realisateur {
 
 	/**
 	 * Getter pour url
+	 * 
 	 * @return url
 	 */
 	public String getUrl() {
@@ -108,14 +127,30 @@ public class Realisateur {
 	}
 
 	/**
-	 * Setter pour url 
+	 * Setter pour url
+	 * 
 	 * @param url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
-	
-	
+
+	/**
+	 * Getter pour film
+	 * 
+	 * @return film
+	 */
+	public List<Film> getFilm() {
+		return film;
+	}
+
+	/**
+	 * Setter pour film
+	 * 
+	 * @param film
+	 */
+	public void setFilm(List<Film> film) {
+		this.film = film;
+	}
+
 }

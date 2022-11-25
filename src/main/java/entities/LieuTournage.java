@@ -3,10 +3,14 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +33,10 @@ public class LieuTournage extends Lieu {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ManyToMany(mappedBy = "lieuTournages")
+	private List<Film> film = new ArrayList<Film>();
+
+	
 	/**Constructeur 
 	
 	 * @param id
@@ -36,11 +44,14 @@ public class LieuTournage extends Lieu {
 	 * @param etatDept
 	 * @param pays
 	 * @param id2
+	 * @param film
 	 */
-	public LieuTournage(int id, String ville, String etatDept, Pays pays, int idLieu) {
+	public LieuTournage(int id, String ville, String etatDept, Pays pays, int id2, List<Film> film) {
 		super(id, ville, etatDept, pays);
-		id = idLieu;
+		id = id2;
+		this.film = film;
 	}
+
 
 	/**Constructeur vide et sans paramettre
 	 * 
@@ -49,10 +60,12 @@ public class LieuTournage extends Lieu {
 		super();
 	}
 
+
 	@Override
 	public String toString() {
-		return "LieuTournage [id=" + id + "]";
+		return "LieuTournage [id=" + id + ", film=" + film + "]";
 	}
+
 
 	/**
 	 * Getter pour id
@@ -62,12 +75,31 @@ public class LieuTournage extends Lieu {
 		return id;
 	}
 
+
 	/**
 	 * Setter pour id 
 	 * @param id
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	/**
+	 * Getter pour film
+	 * @return film
+	 */
+	public List<Film> getFilm() {
+		return film;
+	}
+
+
+	/**
+	 * Setter pour film 
+	 * @param film
+	 */
+	public void setFilm(List<Film> film) {
+		this.film = film;
 	}
 
 
