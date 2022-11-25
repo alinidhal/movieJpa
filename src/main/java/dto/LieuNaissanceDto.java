@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /** LieuNaissanceDto 
  * 
  * Represente un lieu de naissance Dto (Data Transfert Object)
@@ -7,6 +9,8 @@ package dto;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LieuNaissanceDto extends LieuDto{
 	
 	/**

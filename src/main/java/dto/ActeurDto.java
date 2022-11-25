@@ -2,6 +2,9 @@ package dto;
 
 import java.time.LocalDate;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /** ActeurDto 
  * 
  * Represente un acteur 
@@ -9,6 +12,8 @@ import java.time.LocalDate;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActeurDto {
 
 	/** identite */
@@ -22,6 +27,22 @@ public class ActeurDto {
 	
 	/** date de naissance */
 	private LocalDate dateNaissance;
+
+	
+	/**Constructeur 
+	
+	 * @param identite
+	 * @param url
+	 * @param height
+	 * @param dateNaissance
+	 */
+	public ActeurDto(String identite, String url, int height, LocalDate dateNaissance) {
+		super();
+		this.identite = identite;
+		this.url = url;
+		this.height = height;
+		this.dateNaissance = dateNaissance;
+	}
 
 	/**
 	 * Constructeur

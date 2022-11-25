@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /** LieuTournageDto
  * 
  * Represente un lieu de tournage 
@@ -7,6 +9,8 @@ package dto;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LieuTournageDto extends LieuDto{
 
 	/**

@@ -3,6 +3,7 @@ package dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -13,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FilmDto {
 
 	/** Id du film */
@@ -50,6 +53,38 @@ public class FilmDto {
 	private List<String> genre = new ArrayList<String>();
 
 	/**
+	 * Constructeur
+	 * 
+	 * @param filmId
+	 * @param pays
+	 * @param nom
+	 * @param url
+	 * @param plot
+	 * @param langue
+	 * @param lieuTournage
+	 * @param realisateur
+	 * @param anneeSortie
+	 * @param role
+	 * @param genre
+	 */
+	public FilmDto(String filmId, PaysDto pays, String nom, String url, String plot, String langue,
+			LieuTournageDto lieuTournage, RealisateurDto realisateur, String anneeSortie, RoleDto role,
+			List<String> genre) {
+		super();
+		this.filmId = filmId;
+		this.pays = pays;
+		this.nom = nom;
+		this.url = url;
+		this.plot = plot;
+		this.langue = langue;
+		this.lieuTournage = lieuTournage;
+		this.realisateur = realisateur;
+		this.anneeSortie = anneeSortie;
+		this.role = role;
+		this.genre = genre;
+	}
+
+	/**
 	 * Constructeur vide de FilmDto
 	 */
 	public FilmDto() {
@@ -62,21 +97,26 @@ public class FilmDto {
 				+ ", anneeSortie=" + anneeSortie + ", role=" + role + ", genre=" + genre + "]";
 	}
 
-	/** Getter pour Realisateur
+	/**
+	 * Getter pour Realisateur
+	 * 
 	 * @return realisateur
 	 */
 	public RealisateurDto getRealisateur() {
 		return realisateur;
 	}
 
-	/** Setter pour Realisateur
+	/**
+	 * Setter pour Realisateur
+	 * 
 	 * @param realisateur
 	 */
 	public void setRealisateur(RealisateurDto realisateur) {
 		this.realisateur = realisateur;
 	}
 
-	/** Getter pour Role
+	/**
+	 * Getter pour Role
 	 *
 	 * @return role
 	 */
@@ -84,133 +124,171 @@ public class FilmDto {
 		return role;
 	}
 
-	/** Setter pour role
+	/**
+	 * Setter pour role
+	 * 
 	 * @param role
 	 */
 	public void setRole(RoleDto role) {
 		this.role = role;
 	}
 
-	/** Getter  pour lieu du tournage 
+	/**
+	 * Getter pour lieu du tournage
+	 * 
 	 * @return lieuTournage
 	 */
 	public LieuTournageDto getLieuTournage() {
 		return lieuTournage;
 	}
 
-	/** Setter pour lieu du tournage 
+	/**
+	 * Setter pour lieu du tournage
+	 * 
 	 * @param lieuTournage
 	 */
 	public void setLieuTournage(LieuTournageDto lieuTournage) {
 		this.lieuTournage = lieuTournage;
 	}
 
-	/** Getter pour id du film
+	/**
+	 * Getter pour id du film
+	 * 
 	 * @return filmId
 	 */
 	public String getFilmId() {
 		return filmId;
 	}
 
-	/** Setter pour id du film 
+	/**
+	 * Setter pour id du film
+	 * 
 	 * @param filmId
 	 */
 	public void setFilmId(String filmId) {
 		this.filmId = filmId;
 	}
 
-	/** Getter pour nom
+	/**
+	 * Getter pour nom
+	 * 
 	 * @return nom
 	 */
 	public String getNom() {
 		return nom;
 	}
 
-	/** Setter pour nom
+	/**
+	 * Setter pour nom
+	 * 
 	 * @param nom
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	/** Getter pour Pays 
+	/**
+	 * Getter pour Pays
+	 * 
 	 * @return pays
 	 */
 	public PaysDto getPays() {
 		return pays;
 	}
 
-	/** Setter pour pays 
+	/**
+	 * Setter pour pays
+	 * 
 	 * @param pays
 	 */
 	public void setPays(PaysDto pays) {
 		this.pays = pays;
 	}
 
-	/**Getter pour url
+	/**
+	 * Getter pour url
+	 * 
 	 * @return url
 	 */
 	public String getUrl() {
 		return url;
 	}
 
-	/** Setter pour url
+	/**
+	 * Setter pour url
+	 * 
 	 * @param url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
 
-	/** Getter pour plot, la description
+	/**
+	 * Getter pour plot, la description
+	 * 
 	 * @return plot
 	 */
 	public String getPlot() {
 		return plot;
 	}
 
-	/** Setter pour plot
+	/**
+	 * Setter pour plot
+	 * 
 	 * @param plot
 	 */
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
 
-	/** Getter pour langue 
-	 * @return langue 
+	/**
+	 * Getter pour langue
+	 * 
+	 * @return langue
 	 */
 	public String getLangue() {
 		return langue;
 	}
 
-	/** Setter pour langue 
+	/**
+	 * Setter pour langue
+	 * 
 	 * @param langue
 	 */
 	public void setLangue(String langue) {
 		this.langue = langue;
 	}
 
-	/** Getter pour annee sortie 
+	/**
+	 * Getter pour annee sortie
+	 * 
 	 * @return anneeSortie
 	 */
 	public String getAnneeSortie() {
 		return anneeSortie;
 	}
 
-	/** Setter pour annee sortie 
+	/**
+	 * Setter pour annee sortie
+	 * 
 	 * @param anneeSortie
 	 */
 	public void setAnneeSortie(String anneeSortie) {
 		this.anneeSortie = anneeSortie;
 	}
 
-	/**Getter pour genre
+	/**
+	 * Getter pour genre
+	 * 
 	 * @return genre
 	 */
 	public List<String> getGenre() {
 		return genre;
 	}
 
-	/** Setter pour genre
+	/**
+	 * Setter pour genre
+	 * 
 	 * @param genre
 	 */
 	public void setGenre(List<String> genre) {

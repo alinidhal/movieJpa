@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**PaysDto 
  * 
  * Represente un pays 
@@ -7,6 +9,8 @@ package dto;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PaysDto {
 
 	/** nom */
@@ -16,6 +20,17 @@ public class PaysDto {
 	private String url;
 
 	
+	/**Constructeur 
+	
+	 * @param nom
+	 * @param url
+	 */
+	public PaysDto(String nom, String url) {
+		super();
+		this.nom = nom;
+		this.url = url;
+	}
+
 	/**
 	 * Constructeur vide de PaysDto
 	 */

@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /** LieuDto
  * 
  * Represente un lieu 
@@ -7,6 +9,8 @@ package dto;
  * @author nidhal
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LieuDto {
 
 	/** ville */
@@ -17,6 +21,20 @@ public class LieuDto {
 
 	/** pays */
 	private PaysDto pays;
+
+	
+	/**Constructeur 
+	
+	 * @param ville
+	 * @param etatDept
+	 * @param pays
+	 */
+	public LieuDto(String ville, String etatDept, PaysDto pays) {
+		super();
+		this.ville = ville;
+		this.etatDept = etatDept;
+		this.pays = pays;
+	}
 
 	/**
 	 * Constructeur vide
